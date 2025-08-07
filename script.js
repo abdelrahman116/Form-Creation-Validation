@@ -1,71 +1,28 @@
-function walkDog(){
+document.addEventListener("DOMContentLoaded", (event) => {
+  const form = document.getElementById("registrationForm");
+  const feedbackDiv = document.getElementById("form-feedback");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+    // Validate username
+    const usernameInput = document.getElementById("username");
+    const usernameError = document.getElementById("usernameError");
+    if (usernameInput.value.length < 3) {
+      usernameError.textContent =
+        "Username must be at least 3 characters long.";
+      return;
+    } else {
+      usernameError.textContent = "";
+    }
+  });
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  let password = passwordInput.value;
+  password = password.trim();
+  let email = emailInput.value;
+  email = email.trim();
+  const useName = usernameInput.value.trim();
 
-        return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        const dogwalked = true;
-        if(dogwalked){
-        resolve("You Walk the dog");
-        }
-        else{
-            reject("You DIDN'T walk the dog!")
-        }
-
-        
-    },1500);
+  console.log(password);
+  console.log(email);
+  console.log(useName);
 });
-}
-function cleanKitchen(){
-  
-        return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        const cleanKitchen = true;
-        if(cleanKitchen){
-        resolve("You clean the kitchen");
-        }
-        else{
-            reject("You DIDN'T clean the kitchen");
-        
-
-        }
-
-    },3500);
-});
-}
-function talkOutTrash(){
-
-        return new Promise((resolve,reject)=>{
-    setTimeout(()=>{
-        const talkTheTrash = false;
-        if(talkTheTrash){
-        resolve("You took out the trash");
-        }
-        else{
-            reject("You DIDN'T take the trash out");
-        }
-        
-
-    },500);
-});
-}
-
-walkDog().then(value => {console.log(value); return cleanKitchen()})
-.then(value => {console.log(value); return talkOutTrash()})
-.then(value => {console.log(value); console.log("You Finished");})
-.catch(error => console.error(error));
-
-async function doChores(){
-    const walkDogResult = await walkDog();
-    console.log(walkDogResult);
-    
-    const cleanKitchenResult = await cleanKitchen();
-    console.log(cleanKitchenResult);
-
-    const talkOutTrashResult = await talkOutTrash();
-    console.log(talkOutTrashResult);
-
-    console.log("You finished all the chores!");
-}
-catch(error){
-    console.error(error);
-}
-doChores();
