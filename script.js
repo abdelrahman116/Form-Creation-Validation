@@ -20,19 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let messages = [];
 
-    if (usernameInput.value.length < 3) {
+    if (username.length < 3) {
       isValidUser = false;
       messages.push("Username must be at least 3 characters long.");
     } else {
       isValidUser = true;
     }
-    if (emailInput.value.includes("@")) {
+    if (email.includes("@")) {
       isValidEmail = true;
     } else {
       messages.push(`Email Must Include "@"`);
       isValidEmail = false;
     }
-    if (passwordInput.value.length < 8) {
+    if (password.length < 8) {
       isValidPass = false;
       messages.push("Password Must be longer than 8 characters");
     } else {
