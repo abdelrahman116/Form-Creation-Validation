@@ -22,19 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (usernameInput.value.length < 3) {
       isValidUser = false;
-      messages = "Username must be at least 3 characters long.";
+      messages.push("Username must be at least 3 characters long.");
     } else {
       isValidUser = true;
     }
     if (emailInput.value.includes("@")) {
       isValidEmail = true;
     } else {
-      messages = `Email Must Include "@"`;
+      messages.push(`Email Must Include "@"`);
       isValidEmail = false;
     }
     if (passwordInput.value.length < 8) {
       isValidPass = false;
-      messages = "Password Must be longer than 8 characters";
+      messages.push("Password Must be longer than 8 characters");
     } else {
       isValidPass = true;
     }
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       isValidPass === false
     ) {
       feedbackDiv.style.display = "block";
-      feedbackDiv.textContent = messages;
+      feedbackDiv.innerHTML = messages.join("<br>");
       feedbackDiv.style.color = "#dc3545";
     } else {
       feedbackDiv.style.display = "block";
